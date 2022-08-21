@@ -1,5 +1,7 @@
 # Minecraft Terminal
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ca238453398549089a3e18627ccd6174)](https://app.codacy.com/gh/MC-Terminal/Minecraft-Terminal?utm_source=github.com&utm_medium=referral&utm_content=MC-Terminal/Minecraft-Terminal&utm_campaign=Badge_Grade_Settings)
+
 Minecraft Terminal is a lightweight CLI app that allows you to play minecraft in the terminal.
 
 This README is a work in progress:
