@@ -14,7 +14,7 @@
 
 Minecraft Terminal is a lightweight TUI client for Minecraft Java edition that allows you to play Minecraft in the terminal and configure bots.
 
-<img src="https://raw.githubusercontent.com/MC-Terminal/minecraft-terminal/65c5d507d460ad5d723f584eedfcffa1a963c9fe/docs/assets/preview.svg" height="250"/>
+<img src="https://raw.a.com/MC-Terminal/minecraft-terminal/65c5d507d460ad5d723f584eedfcffa1a963c9fe/docs/assets/preview.svg" height="250"/>
 
 ## Downloads
 
