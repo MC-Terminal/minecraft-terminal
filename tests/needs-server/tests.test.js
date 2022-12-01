@@ -16,7 +16,7 @@ beforeAll(async () => {
 	bot = await serverUtils.beforeEverything();
 
 	commands.setBot(bot);
-	mcUtils.setBot(bot);
+	mcUtils.setup(bot);
 }, 30 * 1000);
 
 async function goToStart () {
