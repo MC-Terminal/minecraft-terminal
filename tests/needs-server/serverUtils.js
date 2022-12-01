@@ -1,6 +1,5 @@
 const mineflayer = require('mineflayer');
 const { EventEmitter } = require('events');
-const sleep = require('../../lib/sleep');
 
 const serverVersion = '1.8.9';
 const serverPort = 12345;
@@ -14,7 +13,7 @@ async function waitForBotToEnd (bot) {
 	}
 	ended = true;
 	return await new Promise((resolve) => bot.once('end', resolve));
-};
+}
 
 let spawned = false;
 async function waitForBotToSpawn (bot) {
