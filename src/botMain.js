@@ -190,7 +190,7 @@ function botMain () {
 			}
 
 			autoComplete.setup(chat);
-			autoComplete(commandCompletions, 2, true, ansi.color.rgb(40, 35, 150), ansi.color.reset);
+			autoComplete(commandCompletions, 2, true, true, ansi.color.rgb(40, 35, 150), ansi.color.reset);
 		}
 
 		// Log chat messages sent before being logged in
