@@ -57,7 +57,7 @@ require('./initChat')(chat);
 			settings.bot.cred.port = port;
 		}
 
-		// Bot main
+		// Start the bot
 		let bot;
 		botMain.setup(bot, chat, settings);
 		botMain();
