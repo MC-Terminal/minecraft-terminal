@@ -47,6 +47,6 @@ Check out the [README](https://github.com/MC-Terminal/minecraft-terminal#readme)
 
 ## Contribution
 
-If you'd like to contribute to Minecraft Terminal, great, just fork the repository and submit a pull request on the _testing_ branch.
+If you'd like to contribute to Minecraft Terminal, great, just fork the repository and submit a pull request on the _Master_ branch.
 
 [![Alt](https://repobeats.axiom.co/api/embed/ca7a84ac45ec125429b40b0672e005c4042f9108.svg "Repobeats analytics")](#)
