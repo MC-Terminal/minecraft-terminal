@@ -177,12 +177,21 @@ function botMain () {
 		chat.setPrompt(getCommandPrompt(bot.username, settings.bot.cred.server));
 
 		// Init autoComplete
-		const commandsCompletions = autoComplete.arrayToCompletions(
-			Object.keys(commands.commands),
-			[...commands.reservedCommandNames, ...commands.scriptOnlyCommands]
-		);
-		autoComplete.setup(chat);
-		autoComplete(commandsCompletions, 0, true, ansi.color.rgb(40, 35, 150), ansi.color.reset);
+		{
+			const commandCompletions = {};
+			const commandNames = Object.keys(commands.commands);
+			const dontInclude = ['reco', 'exit', ...commands.reservedCommandNames, ...commands.scriptOnlyCommands];
+			for (let a = 0; a < commandNames.length; a++) {
+				const cmdName = commandNames[a];
+
+				if (!dontInclude.includes(cmdName)) {
+					commandCompletions['.' + cmdName] = {};
+				}
+			}
+
+			autoComplete.setup(chat);
+			autoComplete(commandCompletions, 2, true, ansi.color.rgb(40, 35, 150), ansi.color.reset);
+		}
 
 		// Log chat messages sent before being logged in
 		for (let i = 0; i < beforeLoginMsgs.length; i++) {
