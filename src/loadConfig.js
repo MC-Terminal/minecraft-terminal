@@ -37,11 +37,11 @@ function load (settings) {
 	let physics;
 	try {
 		physics = requireTOML(`${configPath}/physics.toml`);
-		if (physics.usePhysicsJSON === true) {
+		if (physics.usePhysicsConfig === true) {
 			warn(`Using custom physics. this will result in a ${highLight1('ban')}%COLOR% in most servers!`);
-			info('You can disable it by editing usePhysicsJSON in physics.toml');
+			info('You can disable it by editing usePhysicsConfig in physics.toml');
 			settings.config.enabled.physics = true;
-			delete physics.usePhysicsJSON;
+			delete physics.usePhysicsConfig;
 			config.physics = physics;
 		}
 	} catch (e) {

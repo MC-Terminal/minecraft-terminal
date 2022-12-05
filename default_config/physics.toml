@@ -1,4 +1,4 @@
-usePhysicsJSON = false
+usePhysicsConfig = false
 gravity = 0.08
 airdrag = 0.9800000190734863
 yawSpeed = 3
