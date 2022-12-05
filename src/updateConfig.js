@@ -31,8 +31,26 @@ readdirSync(join(MP, 'default_config')).forEach(file => {
 		const config = readFileSync(filePath, 'UTF8');
 		const defaultConfig = readFileSync(defaultconfigPath, 'UTF8');
 		const parsedDefaultConfig = TOML.parse(defaultConfig);
-		const parsedConfig = onlyKeepKeys(TOML.parse(config), parsedDefaultConfig);
-		out = betterMerge(parsedConfig, parsedDefaultConfig);
+		const modifiedRmParsedDefaultConfig = Object.assign({}, parsedDefaultConfig);
+		let parsedConfig = TOML.parse(config);
+
+		// Please find a better way of doing this
+		if (file === 'plugins.toml') {
+			Object.assign(modifiedRmParsedDefaultConfig, { settings: parsedConfig.settings });
+		}
+		if (file === 'config.toml') {
+			Object.assign(modifiedRmParsedDefaultConfig, { commands: { commandAliases: parsedConfig.commands.commandAliases } });
+		}
+		if (file !== 'tasks.toml') {
+			parsedConfig = onlyKeepKeys(parsedConfig, modifiedRmParsedDefaultConfig);
+		}
+
+		//
+		const modifiedAddParsedDefaultConfig = Object.assign({}, parsedDefaultConfig);
+		if (file === 'config.toml') {
+			delete modifiedAddParsedDefaultConfig.commands.commandAliases;
+		}
+		out = betterMerge(parsedConfig, modifiedAddParsedDefaultConfig);
 	} catch {
 		return;
 	}
