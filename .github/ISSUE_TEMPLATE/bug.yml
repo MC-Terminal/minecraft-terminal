@@ -1,0 +1,60 @@
+name: Bug Report
+description: File a bug report
+labels: [bug]
+body:
+- type: markdown
+  attributes:
+    value: |
+      Before submitting a bug report, please make sure you have read this *entire* form, and that:
+      * You have read the [wiki](https://github.com/MC-Terminal/minecraft-terminal/wiki) and it has not answered your question.
+      * Your issue has not been reported before, [make sure to use the search function!](https://github.com/MC-Terminal/minecraft-terminal/issues)
+
+      **Do not forget to give your issue a descriptive title.**
+- type: dropdown
+  attributes:
+    label: Operating System
+    description: If you know this bug occurs on multiple operating systems, select all you have tested.
+    multiple: true
+    options:
+    - Windows
+    - macOS
+    - Linux
+    - Other
+- type: textarea
+  attributes:
+    label: Version of Minecraft Terminal
+    description: The version of Minecraft Terminal used in the bug report.
+    placeholder: '5.8.0'
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Version of Node
+    description: The version of Node used in the bug report.
+    placeholder: '16.15.1'
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Description of bug
+    description: What did you expect to happen, what happened, and why is it incorrect?
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Steps to reproduce
+    description: A bulleted list, or an exported instance if relevant.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Suspected cause
+    description: If you know what could be causing this bug, describe it here.
+  validations:
+    required: false
+- type: checkboxes
+  attributes:
+    label: This issue is unique
+    options:
+    - label: I have searched the issue tracker and did not find an issue describing my bug.
+      required: true
