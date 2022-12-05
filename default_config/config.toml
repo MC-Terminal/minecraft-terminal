@@ -7,6 +7,12 @@ RegExFlags = ""
 commandPrompt = ">"
 enableNonVanillaCMD = true
 
+	[commands.autoComplete]
+	enabled = true
+	minLength = 1
+	caseInsensitive = true
+	RGBColor = [ 50, 60, 80 ]
+
 	[commands.commandAliases]
 	stopfollow = "unfollow"
 	dist = "distance"
@@ -24,14 +30,6 @@ enableNonVanillaCMD = true
 	err = "error"
 	ok = "success"
 	"&" = "async"
-
-[mineflayer.proxy]
-host = "0.0.0.0"
-port = 1_080
-
-[mineflayer.webView]
-firstPerson = true
-showTrail = false
 
 [mineflayer.movements]
 canDig = true

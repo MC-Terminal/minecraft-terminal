@@ -7,3 +7,14 @@ mapDownloader = false
 autoFish = false
 webView = false
 socks5Proxy = false
+
+[settings.socks5Proxy]
+host = "0.0.0.0"
+port = 1_080
+username = ""
+password = ""
+
+[settings.webView]
+firstPerson = true
+showTrail = false
+port = 3000

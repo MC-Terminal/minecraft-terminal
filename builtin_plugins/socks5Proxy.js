@@ -3,12 +3,13 @@ const ProxyAgent = require('proxy-agent');
 const log = require('../lib/log');
 
 const before = (A) => {
+	const proxySettings = A.settings.settings.config.config.plugins.settings.socks5Proxy;
 	const minecraftHost = A.settings.options.host;
 	const minecraftPort = A.settings.options.port;
-	const proxyHost = A.settings.settings.config.config.config.mineflayer.proxy.host;
-	const proxyPort = A.settings.settings.config.config.config.mineflayer.proxy.port;
-	const proxyUsername = A.settings.settings.config.config.config.mineflayer.proxy.username;
-	const proxyPassword = A.settings.settings.config.config.config.mineflayer.proxy.password;
+	const proxyHost = proxySettings.host;
+	const proxyPort = proxySettings.port;
+	const proxyUsername = proxySettings.username || undefined;
+	const proxyPassword = proxySettings.password || undefined;
 	const stream = (client) => {
 		Socks.createConnection({
 			proxy: {
