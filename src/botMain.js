@@ -181,7 +181,7 @@ function botMain () {
 			const autoCompleteSettings = settings.config.config.config.commands.autoComplete;
 			if (autoCompleteSettings.enabled === true) {
 				const commandCompletions = {};
-				const commandNames = Object.keys(commands.commands);
+				const commandNames = [...Object.keys(commands.commands), ...Object.keys(settings.config.config.config.commands.commandAliases)];
 				const dontInclude = ['reco', 'exit', ...commands.reservedCommandNames, ...commands.scriptOnlyCommands];
 				for (let a = 0; a < commandNames.length; a++) {
 					const cmdName = commandNames[a];
