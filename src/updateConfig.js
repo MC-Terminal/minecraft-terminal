@@ -36,10 +36,10 @@ readdirSync(join(MP, 'default_config')).forEach(file => {
 
 		// Please find a better way of doing this
 		if (file === 'plugins.toml') {
-			Object.assign(modifiedRmParsedDefaultConfig, { settings: parsedConfig.settings });
+			betterMerge(modifiedRmParsedDefaultConfig, { settings: parsedConfig.settings }, { mutate: true });
 		}
 		if (file === 'config.toml') {
-			Object.assign(modifiedRmParsedDefaultConfig, { commands: { commandAliases: parsedConfig.commands.commandAliases } });
+			betterMerge(modifiedRmParsedDefaultConfig, { commands: { commandAliases: parsedConfig.commands.commandAliases } }, { mutate: true });
 		}
 		if (file !== 'tasks.toml') {
 			parsedConfig = onlyKeepKeys(parsedConfig, modifiedRmParsedDefaultConfig);
@@ -50,7 +50,7 @@ readdirSync(join(MP, 'default_config')).forEach(file => {
 		if (file === 'config.toml') {
 			delete modifiedAddParsedDefaultConfig.commands.commandAliases;
 		}
-		out = betterMerge(parsedConfig, modifiedAddParsedDefaultConfig);
+		out = betterMerge(modifiedAddParsedDefaultConfig, parsedConfig);
 	} catch {
 		return;
 	}

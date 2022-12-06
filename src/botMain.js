@@ -5,7 +5,7 @@ const mineflayer = require('mineflayer');
 const PACKAGE = require('../package.json');
 const commands = require('../lib/commands');
 const getPlugins = require('./getPlugins');
-const merge = require('merge');
+const { recursive: mergeRecursive } = require('merge');
 const autoComplete = require('../lib/autoComplete');
 
 let bot, chat, settings;
@@ -102,9 +102,9 @@ function setListeners () {
 	// set terminal title and movements
 	bot.once('spawn', async () => {
 		ansi.other.setTermTitle(`${bot.player?.username || settings.bot.cred.username} @ ${settings.bot.cred.server}`);
-		const movements = merge.recursive(bot.pathfinder.movements, settings.config.config.config?.mineflayer.movements);
+		const movements = mergeRecursive(bot.pathfinder.movements, settings.config.config.config?.mineflayer.movements);
 		if (settings.config.enabled.physics === true) {
-			movements.bot.physics = merge.recursive(movements.bot.physics, settings.config.config.physics);
+			movements.bot.physics = mergeRecursive(movements.bot.physics, settings.config.config.physics);
 		}
 		bot.pathfinder.setMovements(movements);
 	});
