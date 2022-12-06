@@ -146,7 +146,6 @@ function botMain () {
 
 	bot._client.once('connect', () => {
 		bot.off('error', connectErr);
-		// Set command prompt
 		commands.commands.tmp.botMoving = false;
 		commands.commands.tmp.botLooking = false;
 		commands.commands.tmp.botAttacking = false;
@@ -160,6 +159,7 @@ function botMain () {
 		// bot.loadPlugin(pathfinder);
 
 		logger.info('Logging in...', 3);
+		// Set command prompt
 		chat.setPrompt(getCommandPrompt('Loading', settings.bot.cred.server));
 		setListeners();
 	});
