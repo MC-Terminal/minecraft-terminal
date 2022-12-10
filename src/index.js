@@ -4,7 +4,7 @@
 const settings = new (require('./settings'))();
 
 // Check if the 'configPath.toml' file exists if not create it
-require('./configPath');
+require('./checkConfig');
 
 // Parse cmd args
 require('./getOpts')(settings);
@@ -30,6 +30,7 @@ const botMain = require('./botMain');
 const readline = require('readline');
 const commands = require('../lib/commands');
 const path = require('path');
+const requireTOML = require('../lib/requireTOML');
 
 // Set uncaught exception message
 require('./uncaughtExcep')(settings.logging.debug);
@@ -63,6 +64,12 @@ require('./initChat')(chat);
 		let bot;
 		botMain.setup(bot, chat, settings);
 		botMain();
-		commands.commands.tasks(path.join(require('../lib/configPath')().path, 'tasks.toml'));
+
+		// Run command tasks
+		{
+			const tasksTOMLPath = path.join(require('../lib/configPath')().path, 'tasks.toml');
+			const tasks = requireTOML(tasksTOMLPath);
+			commands.commands.tasks(tasks);
+		}
 	}
 )();
