@@ -1,6 +1,6 @@
 /* eslint-env jest */
 const ansi = require('../../lib/ansi');
-const hexToRGB = require('../../lib/hexToRGB');
+const { hexToRGBA } = require('../../lib/utils');
 
 test('Set Minecraft version', () => {
 	ansi.other.setMCVersion('1.8.9');
@@ -20,7 +20,7 @@ test('Minecraft Hex code conversion to ansi', () => {
 	expect(
 		ansi.MCColor.c2c('&' + hexCode, '&', false)
 	).toBe(
-		ansi.color.rgb(...hexToRGB(hexCode, [6])) + ansi.color.reset
+		ansi.color.rgb(...hexToRGBA(hexCode, [6])) + ansi.color.reset
 	);
 });
 

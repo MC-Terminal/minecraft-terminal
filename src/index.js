@@ -23,15 +23,16 @@ settings.config.config = require('./loadConfig')(settings);
 // Override credentials
 require('./overrideCred')(settings);
 
-// Import modules
+// Import and cache modules
 const { EventEmitter } = require('node:events');
+EventEmitter.defaultMaxListeners = 0;
 const botMain = require('./botMain');
 const readline = require('readline');
 const commands = require('../lib/commands');
+const path = require('path');
 
 // Set uncaught exception message
 require('./uncaughtExcep')(settings.logging.debug);
-EventEmitter.defaultMaxListeners = 0;
 
 // Setup chat and input
 const chat = readline.createInterface({
@@ -43,6 +44,7 @@ chat.once('close', async () => {
 	process.stdout.write('\n');
 	process.exit();
 });
+
 require('./initChat')(chat);
 
 (
@@ -61,6 +63,6 @@ require('./initChat')(chat);
 		let bot;
 		botMain.setup(bot, chat, settings);
 		botMain();
-		commands.commands.tasks();
+		commands.commands.tasks(path.join(require('../lib/configPath')().path, 'tasks.toml'));
 	}
 )();

@@ -1,6 +1,6 @@
 const logger = require('../lib/log');
 const ansi = require('../lib/ansi');
-const parseVar = require('../lib/parseVar');
+const { parseVar } = require('../lib/utils');
 const mineflayer = require('mineflayer');
 const PACKAGE = require('../package.json');
 const commands = require('../lib/commands');
@@ -30,7 +30,11 @@ const checkForUpdates = () => {
 
 const getCommandPrompt = (name, server) => {
 	if (settings.config.config.config?.commands?.commandPrompt !== undefined) {
-		return ansi.MCColor.c2c(parseVar(settings.config.config.config.commands.commandPrompt, { name, server }, '%', '%'), '&');
+		return ansi.MCColor.c2c(parseVar(settings.config.config.config.commands.commandPrompt, { name, server }, {
+			varPrefix: '%',
+			varSuffix: '%',
+			undefinedVar: 'undefined'
+		}), '&');
 	} else {
 		return '>';
 	}
