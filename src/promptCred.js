@@ -17,14 +17,14 @@ module.exports = async (settings, chat) => {
 	// Check if username is defined or null
 	if (!settings.bot.cred.username) {
 		settings.bot.cred.username = await prompt('Login :');
-		if (['microsoft', 'ms'].includes(settings.bot.cred.auth.toLowerCase()) && !settings.bot.cred.username) {
+		if (settings.bot.cred.auth.toLowerCase() === 'microsoft' && !settings.bot.cred.username) {
 			warn('When using a Microsoft auth you must specify a password and username', 2);
 			process.exit(1);
 		}
 	}
 
 	// Check if password is defined or null
-	if (['microsoft', 'ms'].includes(settings.bot.cred.auth.toLowerCase()) && !settings.bot.cred.password) {
+	if (settings.bot.cred.auth.toLowerCase() === 'microsoft' && !settings.bot.cred.password) {
 		settings.bot.cred.password = await prompt('Password :');
 		if (!settings.bot.cred.password) {
 			warn('When using a Microsoft auth you must specify a password and username', 2);
