@@ -45,7 +45,8 @@ chat.once('close', async () => {
 	process.stdout.write('\n');
 	process.exit();
 });
-
+require('../lib/prompt').setInterface(chat);
+require('../lib/log').setSWInterface(chat);
 require('./initChat')(chat);
 
 (

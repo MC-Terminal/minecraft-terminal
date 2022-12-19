@@ -5,17 +5,17 @@ const configPathPath = require('../lib/configPath').path;
 function set (settings) {
 	getopt(['--help', '-h'], 0, () => {
 		process.stdout.write(
-			'Usage:\n' +
-			'   --no-conf, -nc           Do not use the configuration file.\n' +
-			'   --no-cred, -ns           Do not use the credentials file.\n' +
-			'   --no-plugins, -np        Do not load plugins specified in plugins file.\n' +
-			'   --set-conf-path, -scp    Set the config folder path\n' +
-			'   --get-conf-path, -gcp    Get the config folder path\n' +
-			'   --cred, -c               <Auth> <Username> <Password> <Version> <Server>\n' +
-			'                            Override credentials from CLI arguments.\n' +
-			'   --debug                  Enable debug mode.\n' +
-			'   --version, -v            Show version information.\n' +
-			'   --help, -h               Show this help message.\n'
+			`Usage: ${PACKAGE.name} [OPTIONS] \n` +
+			'  --no-conf, -ns           Do not use the configuration file.\n' +
+			'  --no-cred, -nc           Do not use the credentials file.\n' +
+			'  --no-plugins, -np        Do not load plugins specified in plugins file.\n' +
+			'  --set-conf-path, -scp    Set the config folder path\n' +
+			'  --get-conf-path, -gcp    Get the config folder path\n' +
+			'  --cred, -c               <Auth> <Username> <Password> <Version> <Server>\n' +
+			'                           Override credentials from CLI arguments.\n' +
+			'  --debug                  Enable debug mode.\n' +
+			'  --version, -v            Show version information.\n' +
+			'  --help, -h               Show this help message.\n'
 		);
 		process.exit();
 	});

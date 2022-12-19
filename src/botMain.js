@@ -180,31 +180,7 @@ function botMain () {
 		chat.line = '';
 		chat.setPrompt(getCommandPrompt(bot.username, settings.bot.cred.server));
 
-		// Init autoComplete
-		{
-			const autoCompleteSettings = settings.config.config.config.commands.autoComplete;
-			if (autoCompleteSettings.enabled === true) {
-				const commandCompletions = {};
-				const commandNames = [...Object.keys(commands.commands), ...Object.keys(settings.config.config.config.commands.commandAliases)];
-				const dontInclude = ['reco', 'exit', ...commands.reservedCommandNames, ...commands.scriptOnlyCommands];
-				for (let a = 0; a < commandNames.length; a++) {
-					const cmdName = commandNames[a];
-
-					if (!dontInclude.includes(cmdName)) {
-						commandCompletions['.' + cmdName] = {};
-					}
-				}
-
-				autoComplete.setup(chat);
-				autoComplete(commandCompletions, {
-					minLength: autoCompleteSettings.minLength,
-					startOnly: true,
-					caseInsensitive: autoCompleteSettings.caseInsensitive,
-					completionPrefix: ansi.color.rgb(...autoCompleteSettings.RGBColor),
-					completionSuffix: ansi.color.reset
-				});
-			}
-		}
+		initAutoComplete();
 
 		// Log chat messages sent before being logged in
 		for (let i = 0; i < beforeLoginMsgs.length; i++) {
@@ -219,7 +195,35 @@ function botMain () {
 
 		// Check for updates
 		checkForUpdates();
+		// while (true) {
+		// // do nothing+
+		// }
 	});
+}
+
+function initAutoComplete () {
+	const autoCompleteSettings = settings.config.config.config.commands.autoComplete;
+	if (autoCompleteSettings.enabled === true) {
+		const commandCompletions = {};
+		const commandNames = [...Object.keys(commands.commands), ...Object.keys(settings.config.config.config.commands.commandAliases)];
+		const dontInclude = ['reco', 'exit', ...commands.reservedCommandNames, ...commands.scriptOnlyCommands];
+		for (let a = 0; a < commandNames.length; a++) {
+			const cmdName = commandNames[a];
+
+			if (!dontInclude.includes(cmdName)) {
+				commandCompletions['.' + cmdName] = {};
+			}
+		}
+
+		autoComplete.setup(chat);
+		autoComplete(commandCompletions, {
+			minLength: autoCompleteSettings.minLength,
+			startOnly: true,
+			caseInsensitive: autoCompleteSettings.caseInsensitive,
+			completionPrefix: ansi.color.rgb(...autoCompleteSettings.RGBColor),
+			completionSuffix: ansi.color.reset
+		});
+	}
 }
 
 module.exports = botMain;
