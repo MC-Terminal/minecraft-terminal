@@ -3,6 +3,7 @@
 /ignore*
 /.vscode
 /configPath.toml
+vscode-profile*
 
 # Logs
 logs
