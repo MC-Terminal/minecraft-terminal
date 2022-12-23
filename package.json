@@ -44,10 +44,10 @@
 	"dependencies": {
 		"@iarna/toml": "^3.0.0",
 		"@zuzak/owo": "^1.18.0",
-		"axios": "^1.2.0",
+		"axios": "^1.2.1",
 		"merge": "^2.1.1",
-		"mineflayer": "^4.5.1",
-		"mineflayer-maps": "^1.1.1",
+		"mineflayer": "^4.6.0",
+		"mineflayer-maps": "^1.1.2",
 		"mineflayer-pathfinder": "^2.4.1",
 		"pngjs": "^6.0.0",
 		"prismarine-chat": "^1.7.2",
@@ -58,6 +58,6 @@
 		"vec3": "^0.1.7"
 	},
 	"devDependencies": {
-		"@types/node": "^18.11.9"
+		"@types/node": "^18.11.17"
 	}
 }
