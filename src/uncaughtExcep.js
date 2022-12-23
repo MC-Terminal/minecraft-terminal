@@ -3,7 +3,11 @@ const PACKAGE = require('../package.json');
 
 function set (debug) {
 	let onUncaughtException;
-	if (debug === false) {
+	process.on('uncaughtException', (err) => {
+		onUncaughtException(err);
+	});
+
+	if (debug !== true) {
 		onUncaughtException = (err) => {
 			const stack = err.stack?.split('\n');
 			let relevant = '';
@@ -16,11 +20,10 @@ function set (debug) {
 		};
 		return;
 	}
+	Error.stackTraceLimit = Infinity;
 	onUncaughtException = (err) => {
 		process.stdout.write(err.stack);
 	};
-
-	process.on('uncaughtException', onUncaughtException);
 }
 
 module.exports = set;
