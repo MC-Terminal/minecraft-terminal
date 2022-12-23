@@ -13,3 +13,4 @@
 /configPath.toml
 /jest.config.js
 vscode-profile*
+ignore*
