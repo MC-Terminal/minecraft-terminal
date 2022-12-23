@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+const PACKAGE = require('../package.json');
+process.title = PACKAGE.name;
 
 // Set global settings
 const settings = new (require('./settings'))();
