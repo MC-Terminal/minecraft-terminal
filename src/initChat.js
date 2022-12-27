@@ -1,10 +1,10 @@
-function init (chat) {
-	const logger = require('../lib/log');
-	const { MCColor: { c2c } } = require('../lib/ansi');
-	const { events } = require('../lib/commands');
-	const { setInterface: promptSetInterface } = require('../lib/prompt');
-	const { setSWInterface } = require('../lib/log');
+const logger = require('../lib/log');
+const { MCColor: { c2c } } = require('../lib/ansi');
+const { events } = require('../lib/commands');
+const { setInterface: promptSetInterface } = require('../lib/prompt');
+const { setSWInterface } = require('../lib/log');
 
+function init (chat) {
 	promptSetInterface(chat);
 	setSWInterface(chat);
 

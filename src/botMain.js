@@ -9,7 +9,7 @@ const { recursive: mergeRecursive } = require('merge');
 
 let bot, chat, settings;
 
-const checkForUpdates = () => {
+function checkForUpdates () {
 	const getPackage = require('../lib/getPackage');
 	getPackage(PACKAGE.name)
 		.then(({ version }) => {
@@ -153,13 +153,10 @@ function botMain () {
 		commands.commands.tmp.botLooking = false;
 		commands.commands.tmp.botAttacking = false;
 		commands.commands.tmp.lookInt = undefined;
-		// // script = { length: 0, msg: [] };
+		// script = { length: 0, msg: [] };
 
 		// Load plugins (second pass)
 		commands.loadPlugins(plugins, false);
-
-		// Load bot plugins
-		// bot.loadPlugin(pathfinder);
 
 		logger.info('Logging in...', 3);
 		// Set command prompt
@@ -173,7 +170,6 @@ function botMain () {
 
 		// Init chat
 		loggedIn = true;
-		chat.line = '';
 		chat.resume();
 		chat.line = '';
 		chat.setPrompt(getCommandPrompt(bot.username, settings.bot.cred.server));
@@ -194,9 +190,6 @@ function botMain () {
 
 		// Check for updates
 		checkForUpdates();
-		// while (true) {
-		// // do nothing+
-		// }
 	});
 }
 

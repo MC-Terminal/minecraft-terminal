@@ -22,7 +22,7 @@ function set (debug) {
 	}
 	Error.stackTraceLimit = Infinity;
 	onUncaughtException = (err) => {
-		process.stdout.write(err.stack);
+		error(err.stack);
 	};
 }
 
