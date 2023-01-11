@@ -22,7 +22,7 @@ function set (debug) {
 		return;
 	}
 	onUncaughtException = (err) => {
-		process.stderr.write(ansi.color.rgb(255 , 80, 120) + err.stack + ansi.color.reset);
+		process.stderr.write(ansi.color.rgb(255, 80, 120) + err.stack + ansi.color.reset);
 	};
 }
 

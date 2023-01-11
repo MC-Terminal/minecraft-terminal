@@ -26,8 +26,9 @@ function set (settings) {
 	});
 
 	getopt(['--debug'], 2, (params) => {
-		const stackTraceLimit = params[1];
-		if (Number.isInteger(stackTraceLimit)) {
+		const stackTraceLimit = Number(params[1]);
+		if (Number.isInteger(stackTraceLimit) || stackTraceLimit === Infinity) {
+			console.log(stackTraceLimit);
 			Error.stackTraceLimit = stackTraceLimit;
 		}
 		settings.logging.debug = true;
