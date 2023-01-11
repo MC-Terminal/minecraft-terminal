@@ -1,4 +1,5 @@
 const { error, warn } = require('../lib/log');
+const ansi = require('../lib/ansi');
 const PACKAGE = require('../package.json');
 
 function set (debug) {
@@ -20,9 +21,8 @@ function set (debug) {
 		};
 		return;
 	}
-	Error.stackTraceLimit = Infinity;
 	onUncaughtException = (err) => {
-		error(err.stack);
+		process.stderr.write(ansi.color.rgb(255 , 80, 120) + err.stack + ansi.color.reset);
 	};
 }
 

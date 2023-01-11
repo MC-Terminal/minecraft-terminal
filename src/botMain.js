@@ -132,7 +132,9 @@ function botMain () {
 
 	// Load plugins (first pass)
 	const plugins = getPlugins(settings);
-	commands.loadPlugins(plugins, true);
+	for (const plugin of plugins) {
+		commands.loadPlugin(plugin, true);
+	}
 
 	logger.info('Connecting...', 3);
 
@@ -156,7 +158,9 @@ function botMain () {
 		// script = { length: 0, msg: [] };
 
 		// Load plugins (second pass)
-		commands.loadPlugins(plugins, false);
+		for (const plugin of plugins) {
+			commands.loadPlugin(plugin, false);
+		}
 
 		logger.info('Logging in...', 3);
 		// Set command prompt
