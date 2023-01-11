@@ -1,6 +1,6 @@
 const mineflayerViewer = require('prismarine-viewer').mineflayer;
 const logger = require('../lib/log');
-const ansi = require('../lib/ansi');
+const ansi = require('easy-ansi');
 
 const load = (A) => {
 	const webViewSettings = A.settings.settings.config.config.plugins.settings.webView;

@@ -1,5 +1,5 @@
 const { error, warn } = require('../lib/log');
-const ansi = require('../lib/ansi');
+const ansi = require('easy-ansi');
 const PACKAGE = require('../package.json');
 
 function set (debug) {

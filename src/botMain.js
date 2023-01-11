@@ -1,5 +1,5 @@
 const logger = require('../lib/log');
-const ansi = require('../lib/ansi');
+const ansi = require('easy-ansi');
 const { parseVar } = require('../lib/utils');
 const mineflayer = require('mineflayer');
 const PACKAGE = require('../package.json');

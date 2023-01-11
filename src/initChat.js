@@ -1,5 +1,5 @@
 const logger = require('../lib/log');
-const { MCColor: { c2c } } = require('../lib/ansi');
+const { MCColor: { c2c } } = require('easy-ansi');
 const { events } = require('../lib/commands');
 const { setInterface: promptSetInterface } = require('../lib/prompt');
 const { setSWInterface } = require('../lib/log');
